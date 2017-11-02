@@ -1,0 +1,25 @@
+{
+  "name": "maps-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abianco3/maps-clone.git"
+  },
+  "author": "Anthony Bianco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abianco3/maps-clone/issues"
+  },
+  "homepage": "https://github.com/abianco3/maps-clone#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "react": "^16.0.0",
+    "webpack": "^3.8.1"
+  }
+}
