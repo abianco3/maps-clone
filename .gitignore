@@ -58,4 +58,4 @@ typings/
 .env
 
 # Javascript and css builds
-client/build
+client/public/build
