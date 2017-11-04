@@ -1,7 +1,22 @@
-body {
-  #app {
-    span {
-      color: green;
-    }
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  padding-right: 1em;
+  padding-left: 1em;
+  .map {
+    width : 100%;
+    height: 100%;
+  }
+  .search {
+    height: 4em;
+    width: 30em;
+    position: absolute;
+    top: 4em;
+    left: 6em;
+    z-index: 1;
   }
 }
