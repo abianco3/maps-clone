@@ -1,33 +1,42 @@
 import React, { Component } from 'react';
 import GoogleMap from './GoogleMap.jsx';
+import { formatMarkers } from '../utils/mapUtils';
 
 class App extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      markers: [],
+      places: [],
+      selected: null
+    };
   }
   
   setLocation() {
     if ('geolocation' in navigator) {
-      const success = (pos) => {
+      navigator.geolocation.getCurrentPosition((pos) => {
         this.setState({
           location: {lat: pos.coords.latitude, lng: pos.coords.longitude}
         });
-      };
-
-      const error = () => {
+      }, (err) => {
         this.setState({
           location: {lat: -25.363, lng: 131.044}
         });
-      };
-
-      navigator.geolocation.getCurrentPosition(success, error);
+      });
     } else {
       this.setState({
         location: {lat: -25.363, lng: 131.044}
       });
     }
+  }
+
+  updatePlaces(selected, places) {
+    this.setState({
+      places: places || [],
+      selected: selected,
+      markers: formatMarkers(selected, places)
+    });
   }
 
   componentDidMount() {
@@ -39,7 +48,11 @@ class App extends Component {
     if (location) {
       return (
         <div>
-          <GoogleMap location={this.state.location} />
+          <GoogleMap 
+            location={this.state.location}
+            updatePlaces={this.updatePlaces.bind(this)}
+            markers={this.state.markers}
+          />
         </div>
       );
     }

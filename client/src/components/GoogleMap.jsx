@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { googleKey } from '../../../apiKeys';
-import { initMap } from '../utils/mapUtils';
+import { initMap, updateMap } from '../utils/mapUtils';
 
 class GoogleMap extends Component {
   constructor(props) {
@@ -19,6 +19,10 @@ class GoogleMap extends Component {
     this.searchNode = findDOMNode(this.refs.search);
     this.mapNode = findDOMNode(this.refs.map);
     initMap.call(this, this.props.location);
+  }
+
+  componentWillReceiveProps({ markers }) {
+    updateMap.call(this, markers);
   }
 
   render() {
