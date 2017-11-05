@@ -8,6 +8,7 @@ class App extends Component {
     this.state = {
       markers: [],
       places: [],
+      location: null,
       selected: null,
     };
     this.updatePlaces = this.updatePlaces.bind(this);
@@ -48,7 +49,7 @@ class App extends Component {
     const { location } = this.state;
     if (location) {
       return (
-        <div>
+        <div className="app">
           <GoogleMap
             location={this.state.location}
             updatePlaces={this.updatePlaces}
@@ -57,7 +58,7 @@ class App extends Component {
         </div>
       );
     }
-    return '';
+    return null;
   }
 }
 

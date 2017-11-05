@@ -52,15 +52,16 @@ const icon = (place) => {
 
 
 const clean = (obj) => {
-  for (const key in obj) {
-    if (!obj[key]) {
-      delete obj[key];
+  const temp = obj;
+  Object.keys(temp).forEach((key) => {
+    if (temp[key] === null) {
+      delete temp[key];
     }
-  }
-  return obj;
+  });
+  return temp;
 };
 
-const formatMarkers = function formatMarker(selected, places) {
+const formatMarkers = function formatMarkers(selected, places) {
   return (selected && [selected] || places).map((place) => {
     const marker = {};
     marker.marker = new google.maps.Marker(clean({
@@ -73,4 +74,4 @@ const formatMarkers = function formatMarker(selected, places) {
   });
 };
 
-export { initMap, updateMap, formatMarkers };
+export { initMap, updateMap, formatMarkers, clean, icon };
