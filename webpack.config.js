@@ -14,9 +14,15 @@ const config = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      },
+      {
         test: /\.(js|jsx)?/,
         include: SRC_DIR,
-        exclude: '/node_modules/',
+        exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015']
@@ -27,6 +33,9 @@ const config = {
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json']
   },
   plugins: [
     new ExtractTextPlugin({
