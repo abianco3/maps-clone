@@ -12,11 +12,11 @@ const initMap = function initMap(loc) {
 
   this.searchBox.addListener('places_changed', () => {
     let places = this.searchBox.getPlaces();
-    let selected = null;
+    let selected = [];
 
     if (places.length === 1) {
-      [selected] = places;
-      places = null;
+      selected = places;
+      places = [];
     }
     this.props.updatePlaces(selected, places);
   });
@@ -62,7 +62,7 @@ const clean = (obj) => {
 };
 
 const formatMarkers = function formatMarkers(selected, places) {
-  return (selected && [selected] || places).map((place) => {
+  return (selected[0] && selected || places).map((place) => {
     const marker = {};
     marker.marker = new google.maps.Marker(clean({
       title: place.name,

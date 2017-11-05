@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMap from './GoogleMap';
+import List from './List';
 import { formatMarkers } from '../utils/mapUtils';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
       markers: [],
       places: [],
       location: null,
-      selected: null,
+      selected: [],
     };
     this.updatePlaces = this.updatePlaces.bind(this);
   }
@@ -38,8 +39,8 @@ class App extends Component {
 
   updatePlaces(selected, places) {
     this.setState({
-      places: places || [],
-      selected: selected,
+      places,
+      selected,
       markers: formatMarkers(selected, places),
     });
   }
@@ -54,6 +55,12 @@ class App extends Component {
             location={this.state.location}
             updatePlaces={this.updatePlaces}
             markers={this.state.markers}
+          />
+          <List
+            className="list"
+            places={this.state.places}
+            selected={this.state.selected}
+            updatePlaces={this.updatePlaces}
           />
         </div>
       );
