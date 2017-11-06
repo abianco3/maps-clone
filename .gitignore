@@ -62,3 +62,6 @@ client/public/build
 
 # api keys
 apiKeys.js
+
+# sample data for development
+**/sampleData.js

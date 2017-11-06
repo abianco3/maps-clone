@@ -7,7 +7,7 @@ const ListItem = () => {
 
 ListItem.propTypes = {
   places: PropTypes.array,
-  updatePlaces: PropTypes.function,
+  updatePlaces: PropTypes.func,
 };
 
 export default ListItem;

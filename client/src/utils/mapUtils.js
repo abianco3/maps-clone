@@ -1,3 +1,17 @@
+const getPlaceDetails = (map, place) => {
+  return new Promise((resolve, reject) => {
+    const detailsReq = new google.maps.places.PlacesService(map);
+
+    detailsReq.getDetails(place, (place, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        resolve(place);
+      } else {
+        reject(place);
+      }
+    });
+  });
+};
+
 const initMap = function initMap(loc) {
   this.map = new google.maps.Map(this.mapNode, {
     zoom: 15,
@@ -14,13 +28,21 @@ const initMap = function initMap(loc) {
     let places = this.searchBox.getPlaces();
     let selected = [];
 
-    if (places.length === 1) {
-      selected = places;
-      places = [];
-    }
-    this.props.updatePlaces(selected, places);
+    Promise.all(places.map((place) => {
+      return getPlaceDetails(this.map, place)
+        .catch(() => place);
+    }))
+      .then((details) => {
+        if (details.length === 1) {
+          selected = details;
+          details = [];
+        }
+
+        this.props.updatePlaces(selected, details);
+      });
   });
 };
+
 
 const updateMap = function updateMap(newMarkers) {
   const bounds = new google.maps.LatLngBounds();

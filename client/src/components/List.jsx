@@ -24,7 +24,7 @@ const List = ({ selected, places, updatePlaces }) => {
 List.propTypes = {
   selected: PropTypes.array,
   places: PropTypes.array,
-  updatePlaces: PropTypes.function,
+  updatePlaces: PropTypes.func,
 };
 
 export default List;
