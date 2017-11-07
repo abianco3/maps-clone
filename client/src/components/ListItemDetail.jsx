@@ -7,7 +7,18 @@ const buildBgStyle = (photo, width, height) => {
 };
 
 const ListItemDetail = ({ selected }) => {
-  const { name, rating, photos, types, opening_hours, formatted_address, formatted_phone_number, url, website } = selected[0];
+  const {
+    name,
+    rating,
+    photos,
+    types,
+    opening_hours,
+    formatted_address,
+    formatted_phone_number,
+    url,
+    website,
+  } = selected[0];
+
   let style = {};
 
   if (photos && photos[0].getUrl) {

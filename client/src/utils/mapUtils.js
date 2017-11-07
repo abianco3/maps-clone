@@ -2,11 +2,11 @@ const getPlaceDetails = (map, place) => {
   return new Promise((resolve, reject) => {
     const detailsReq = new google.maps.places.PlacesService(map);
 
-    detailsReq.getDetails(place, (place, status) => {
+    detailsReq.getDetails(place, (result, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        resolve(place);
+        resolve(result);
       } else {
-        reject(place);
+        reject(result);
       }
     });
   });
@@ -25,7 +25,7 @@ const initMap = function initMap(loc) {
   this.searchBox.bindTo('bounds', this.map);
 
   this.searchBox.addListener('places_changed', () => {
-    let places = this.searchBox.getPlaces();
+    const places = this.searchBox.getPlaces();
     let selected = [];
 
     Promise.all(places.map((place) => {
@@ -33,12 +33,13 @@ const initMap = function initMap(loc) {
         .catch(() => place);
     }))
       .then((details) => {
+        let placeDetails = details;
         if (details.length === 1) {
-          selected = details;
-          details = [];
+          selected = placeDetails;
+          placeDetails = [];
         }
 
-        this.props.updatePlaces(selected, details);
+        this.props.updatePlaces(selected, placeDetails);
       });
   });
 };

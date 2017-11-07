@@ -15,9 +15,13 @@ Anthony Bianco
 
 > Install dependencies from package.json using 'npm install from the root directory'.
 
+> add your Google Maps Javascript API key to example.apiKeys.js and rename to apiKeys.js
+
 > Run the build command with 'npm run build'
 
-> Start the app with 'npm start from the root directory' and visit localhost:3000 in your browser
+> Start the app with 'npm start from the root directory' and visit localhost:8080 in your browser
+
+> tests can be run with 'npm test'
 
 > Search for something fun!
 

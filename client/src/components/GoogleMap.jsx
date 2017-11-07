@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
-import { googleKey } from '../../../apiKeys';
+import googleKey from '../../../apiKeys';
 import { initMap, updateMap } from '../utils/mapUtils';
 
 const load = (src) => {

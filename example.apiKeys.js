@@ -1,3 +1,3 @@
-var apiKeys = {
-  googleKey: 'ADD_GOOGLE_MAPS_KEY'
-};
+const googleKey = 'GOGGLE_API_KEY';
+
+export default googleKey;

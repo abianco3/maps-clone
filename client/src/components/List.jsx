@@ -14,7 +14,15 @@ const List = ({ selected, places, updatePlaces }) => {
   if (places.length) {
     return (
       <div className="list">
-        {places.map(place => <ListItem key={place.id} place={place} updatePlaces={updatePlaces} />)}
+        {places.map((place) => {
+          return (
+            <ListItem
+              key={place.id}
+              place={place}
+              updatePlaces={updatePlaces}
+            />
+          );
+        })}
       </div>
     );
   }
