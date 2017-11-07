@@ -1,0 +1,18 @@
+@mixin sizing($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin titlePadding() {
+  padding-top: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-bottom: 1.25em;
+}
+
+@mixin background() {
+  background-color: #bcc9dd;
+  background-size: cover;
+}
+
+$border: 1px solid #CCDDF5;

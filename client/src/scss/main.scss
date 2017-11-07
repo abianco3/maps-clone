@@ -1,4 +1,5 @@
 @import "vendors/reset";
+@import "modules/varsMixins";
 
 html {
   font-family: Roboto, Arial, sans-serif;
@@ -9,25 +10,20 @@ html {
  }
 
 .app {
-  width: 100vw;
-  height: 100vh;
+  @include sizing(100vw, 100vh);
   display: flex;
 }
 
 .main {
-  padding-right: 1em;
-  padding-left: 1em;
-  width: 100%;
   height: 100%;
+  flex-grow: 2;
   
   .map {
-    width : 100%;
-    height: 100%;
+    @include sizing(100%, 100%);
   }
   
   .search {
-    height: 4em;
-    width: 30em;
+    @include sizing(30em, 4em);
     position: absolute;
     top: 4em;
     left: 6em;
@@ -36,31 +32,39 @@ html {
 }
 
 .list {
-   width: 35em;
-   height: 100%;
-   overflow-x: scroll;
+  @include sizing(25em, 100%);
+  overflow-y: scroll;
+  
+  h4 {
+    margin-bottom: 0.4em;
+  }
+
+  p {
+    font-size: 0.85em;
+    font-weight: 300;
+  }
+  
   .detail {
-    width: inherit;
-    height: inherit;
-    
+    @include sizing(inherit, inherit);
+    border-left: $border;
+
     > div > p {
-      max-width: 80%;
-      font-weight: 300;
-      font-size: 0.85em;
       margin-bottom: 1.25em;
-      margin-left: 0.5em;
+      margin-left: 1.5em;
       word-wrap: break-word;
       
       &:first-child {
         margin-top: 2em;
       }
+
+      &:last-child {
+        margin-bottom: 2em;
+      }
     }
     .header {
       position: relative;
-      background-color: #bcc9dd;
-      background-size: cover;
-      width: inherit;
-      height: 30%;
+      @include background();
+      @include sizing(100%, 30%);
        
       div {
         position: absolute;
@@ -68,20 +72,46 @@ html {
         width: 100%;
         color: #fff;
         background-color: #4285f4;
-        padding-top: 1em;
-        padding-left: 1.5em;
-        padding-right: 1.5em;
-        padding-bottom: 1.25em;
+        @include titlePadding();
 
         h4 {
          font-size: 1.25em;
-         margin-bottom: 0.5em;
-        }
-
-        p {
-         font-size: 0.85em;
         }
       }
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      @include sizing(100%, 100%);
+      margin: 0 auto;
+      overflow-y: scroll;
+      div {
+        flex-grow: 1;
+        min-width: 10em;
+        background-color: #bcc9dd;
+        background-size: cover;
+        margin: 0;
+        border: $border;
+      }
+      div:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+  }
+  .list-item {
+    @include sizing(inherit, 10%);
+    cursor: pointer;
+    border-top: $border;
+    border-bottom: #border;
+    @include titlePadding();
+    padding-bottom: 0.5em;
+
+    p {
+      font-size: 0.75em;
+      margin-bottom: 0.1em;
     }
   }
 }

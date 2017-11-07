@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import GoogleMap from './GoogleMap';
 import List from './List';
 import { formatMarkers } from '../utils/mapUtils';
-import data from '../utils/sampleData';
-
-//console.log(data);
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +10,7 @@ class App extends Component {
       markers: [],
       places: [],
       location: null,
-      selected: data.data.slice(0, 1),
+      selected: [],
     };
     this.updatePlaces = this.updatePlaces.bind(this);
   }
